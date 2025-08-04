@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <style>
+    .slider {
+      overflow: hidden;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.3s ease;
+    }
+    .slide {
+      flex-shrink: 0;
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+ 
+  <nav class="bg-blue-700 text-white">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div class="relative flex items-center justify-between h-16">
+        <!-- Logo Section -->
+        <div class="flex-shrink-0">
+          <a href="#" class="text-2xl font-bold text-white">Flipkart</a>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden sm:flex sm:space-x-6">
+          <a href="#" class="text-white hover:bg-blue-600 px-4 py-2 rounded-md">Home</a>
+          <a href="#" class="text-white hover:bg-blue-600 px-4 py-2 rounded-md">Categories</a>
+          <a href="#" class="text-white hover:bg-blue-600 px-4 py-2 rounded-md">Offers</a>
+          <a href="#" class="text-white hover:bg-blue-600 px-4 py-2 rounded-md">Electronics</a>
+          <a href="#" class="text-white hover:bg-blue-600 px-4 py-2 rounded-md">Fashion</a>
+          <a href="#" class="text-white hover:bg-blue-600 px-4 py-2 rounded-md">Help</a>
+        </div>
+        <br>
+
+        <!-- Search Bar -->
+        <div class="flex-1 mx-4">
+          <input type="text" class="w-full px-4 py-2 rounded-md text-gray-700 focus:outline-none" placeholder="Search for products, brands, and more">
+        </div>
+
+        <!-- Cart Icon & Hamburger (Mobile View) -->
+        <div class="flex items-center space-x-4">
+          <!-- Cart Icon -->
+          <button class="text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18l-1.5 9h-15L3 3zm0 0l.5 3h15l.5-3M3 3v18h18V3H3z"></path>
+            </svg>
+          </button>
+
+          <!-- Mobile Hamburger Icon -->
+          <button id="hamburger" class="sm:hidden text-white focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="sm:hidden hidden px-2 pt-2 pb-3 space-y-1">
+        <a href="#" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600">Home</a>
+        <a href="#" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600">Categories</a>
+        <a href="#" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600">Offers</a>
+        <a href="#" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600">Electronics</a>
+        <a href="#" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600">Fashion</a>
+        <a href="#" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600">Help</a>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <!-- new navbar -->
+    <nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        
+        <!-- Logo -->
+        <div class="flex-shrink-0 flex items-center text-blue-600 text-xl font-bold">
+          <span class="text-yellow-400">Flip</span>kart
+        </div>
+
+        <!-- Search Bar -->
+        <div class="hidden md:flex w-1/2">
+          <input
+            type="text"
+            placeholder="Search for products, brands and more"
+            class="w-full px-4 py-2 border rounded-l-md focus:outline-none"
+          />
+          <button class="bg-blue-500 px-4 text-white rounded-r-md hover:bg-blue-600">
+            🔍
+          </button>
+        </div>
+
+        <!-- Right Side -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Login</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Cart 🛒</a>
+        </div>
+
+        <!-- Hamburger Icon -->
+        <div class="md:hidden flex items-center">
+          <button id="menu-toggle" class="text-gray-700 focus:outline-none text-2xl">
+            ☰
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
+      <input
+        type="text"
+        placeholder="Search..."
+        class="w-full px-4 py-2 mb-2 border rounded-md focus:outline-none"
+      />
+      <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Login</a>
+      <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Cart 🛒</a>
+    </div>
+  </nav>
+
+<!-- slider -->
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="relative slider">
+      <!-- Slide Images -->
+      <div class="slides">
+        <div class="slide">
+          <img src="img/BANNER IMG/IMG 1.webp" alt="Slide 1" class="w-full h-auto rounded-lg shadow-lg">
+        </div>
+        <div class="slide">
+          <img src="img/BANNER IMG/2.webp" alt="Slide 2" class="w-full h-auto rounded-lg shadow-lg">
+        </div>
+        <div class="slide">
+          <img src="img/BANNER IMG/3.webp" alt="Slide 3" class="w-full h-auto rounded-lg shadow-lg">
+        </div>
+        <div class="slide">
+          <img src="img/BANNER IMG/4.webp" alt="Slide 4" class="w-full h-auto rounded-lg shadow-lg">
+        </div>
+      </div>
+
+      <!-- Left Arrow -->
+      <button id="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+      
+      <!-- Right Arrow -->
+      <button id="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <br>
+  <DIV class="flex  ">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+  <!-- Image -->
+  <img class="p-10 object-cover" src="img/13.webp" alt="Product Image">
+
+  <!-- Card Content -->
+  <div class="px-6 py-4">
+    <!-- Title -->
+    <div class="font-bold text-xl mb-2">Beds</div>
+
+    <!-- Description -->
+    <p class="text-gray-700 text-base">
+      Min. 50% Off
+    </p>
+  </div>
+
+  <!-- Card Footer -->
+  <div class="px-6 py-4 flex items-center">
+    <!-- Price -->
+   
+
+    <!-- Cart Button -->
+    
+  </div>
+</div>
+<div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+  <!-- Image -->
+  <img class="p-10 object-cover" src="img/9.webp" alt="Product Image">
+
+  <!-- Card Content -->
+  <div class="px-6 py-4">
+    <!-- Title -->
+    <div class="font-bold text-xl mb-2">Shoe Rock</div>
+
+    <!-- Description -->
+    <p class="text-gray-700 text-base">
+    Min. 50% Off
+    </p>
+  </div>
+
+  <!-- Card Footer -->
+
+    <!-- Price -->
+    <span class="text-xl font-semibold text-green-600"></span>
+
+
+    
+  </div>  <div class="px-6 py-4 flex items-center ">
+</div>
+ <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+  <!-- Image -->
+  <img class="p-10 object-cover" src="img/11.webp" alt="Product Image">
+
+  <!-- Card Content -->
+  <div class="px-6 py-4">
+    <!-- Title -->
+    <div class="font-bold text-xl mb-2">Outdoor Chairs</div>
+
+    <!-- Description -->
+    <p class="text-gray-700 text-base">
+      Min. 50% Off
+    </p>
+  </div>
+
+ 
+  </div>
+  
+</div>
+  </DIV>
+  <div class="grid grid-cols-2 md:grid-cols-4  p-2">
+  <!-- Card 1 -->
+  <div class="h-80  rounded overflow-hidden shadow-lg bg-white hover:scale-105 transform transition duration-300">
+    <img class="p-4  object-cover" src="img/1.webp" />
+    <div class="px-6 py-4">
+      <div class="font-semibold text-lg mb-2">Matrola G86</div>
+      <span class="text-green-600 text-xl font-bold">₹14999*</span>
+    </div>
+    <div class="px-6 py-4">
+      <button class="bg-blue-500 text-white py-2 px-4 w-full rounded-lg hover:bg-blue-600 transition duration-200">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="h-80 rounded overflow-hidden shadow-lg bg-white hover:scale-105 transform transition duration-300">
+    <img class="p-4  object-cover" src="img/2.webp" alt="Product Image 2" />
+    <div class="px-6 py-4">
+      <div class="font-semibold text-lg mb-2">Matrola G45 5g</div>
+      <span class="text-green-600 text-xl font-bold">₹10999*</span>
+    </div>
+    <div class="px-6 py-4">
+      <button class="bg-blue-500 text-white py-2 px-4 w-full rounded-lg hover:bg-blue-600 transition duration-200">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="h-80 rounded overflow-hidden shadow-lg bg-white hover:scale-105 transform transition duration-300">
+    <img class=" p-4 object-cover" src="img/3.webp" alt="Product Image 3" />
+    <div class="px-6 py-4">
+      <div class="font-semibold text-lg mb-2">Vivo T4 5g</div>
+      <span class="text-green-600 text-xl font-bold">₹20499*</span>
+    </div>
+    <div class="px-6 py-4">
+      <button class="bg-blue-500 text-white py-2 px-4 w-full rounded-lg hover:bg-blue-600 transition duration-200">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="h-80 rounded overflow-hidden shadow-lg bg-white hover:scale-105 transform transition duration-300">
+    <img class="p-4 object-cover" src="img/5.webp" alt="Product Image 4" />
+    <div class="px-6 py-4">
+      <div class="font-semibold text-lg mb-2">OPPO K13 5G</div>
+      <span class="text-green-600 text-xl font-bold">₹16499*</span>
+    </div>
+    <div class="px-6 py-4">
+      <button class="bg-blue-500 text-white py-2 px-4 w-full rounded-lg hover:bg-blue-600 transition duration-200">Buy Now</button>
+    </div>
+  </div>
+</div>
+<!-- new card -->
+
+
+
+ <div class="grid grid-cols-2 md:grid-cols-4  p-2">
+  <!-- Card 1 -->
+  <div class="h-80  rounded overflow-hidden shadow-lg bg-white hover:scale-105 transform transition duration-300">
+    <img class="p-4  object-cover" src="img/watch.webp" />
+    <div class="px-6 py-4">
+      <div class="font-semibold text-lg mb-2">Wrists watches</div>
+      <span class="text-yellow-600 text-xl font-bold">Min. 90% OFF</span>
+    </div>
+    <div class="px-6 py-4">
+      <button class="bg-blue-500 text-white py-2 px-4 w-full rounded-lg hover:bg-blue-600 transition duration-200">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="h-80 rounded overflow-hidden shadow-lg bg-white hover:scale-105 transform transition duration-300">
+    <img class="p-4  object-cover" src="img/sari.webp" alt="Product Image 2" />
+    <div class="px-6 py-4">
+      <div class="font-semibold text-lg mb-2">Womens's Sari</div>
+      <span class="text-yellow-600 text-xl font-bold">Special Offer</span>
+    </div>
+    <div class="px-6 py-4">
+      <button class="bg-blue-500 text-white py-2 px-4 w-full rounded-lg hover:bg-blue-600 transition duration-200">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="h-80 rounded overflow-hidden shadow-lg bg-white hover:scale-105 transform transition duration-300">
+    <img class=" p-4 object-cover" src="img/shirt.webp" alt="Product Image 3" />
+    <div class="px-6 py-4">
+      <div class="font-semibold text-lg mb-2">Topwear</div>
+      <span class="text-yellow-600 text-xl font-bold">Min. 50% Off</span>
+    </div>
+    <div class="px-6 py-4">
+      <button class="bg-blue-500 text-white py-2 px-4 w-full rounded-lg hover:bg-blue-600 transition duration-200">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="h-80 rounded overflow-hidden shadow-lg bg-white hover:scale-105 transform transition duration-300">
+    <img class="p-4 object-cover" src="img/shoe.webp" alt="Product Image 4" />
+    <div class="px-6 py-4">
+      <div class="font-semibold text-lg mb-2">Men's Footwear</div>
+      <span class="text-yellow-600 text-xl font-bold">Min. 70%Off</span>
+    </div>
+    <div class="px-6 py-4">
+      <button class="bg-blue-500 text-white py-2 px-4 w-full rounded-lg hover:bg-blue-600 transition duration-200">Buy Now</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- CARD -->
+
+  <DIV class=" flex  bg-white  ">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+  <!-- Image -->
+  <img class="p-10 object-cover" src="img/56.webp" alt="Product Image">
+
+  <!-- Card Content -->
+  <div class="px-6 py-4">
+    <!-- Title -->
+    <div class="font-bold text-xl mb-2">Casserole</div>
+
+    <!-- Description -->
+    <p class="text-gray-700 text-base">
+      From 299
+    </p>
+  </div>
+
+  <!-- Card Footer -->
+  <div class="px-6 py-4 flex items-center">
+    <!-- Price -->
+   
+
+    <!-- Cart Button -->
+    
+  </div>
+</div>
+<div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+  <!-- Image -->
+  <img class="p-14 object-cover" src="img/58.webp" alt="Product Image">
+
+  <!-- Card Content -->
+  <div class="  py-4">
+    <!-- Title -->
+    <div class="font-bold text-xl mb-2">Gas Stoves
+      
+    </div>
+
+    <!-- Description -->
+    <p class="text-gray-700 text-base">
+    From 299
+    </p>
+  </div>
+
+  <!-- Card Footer -->
+
+    <!-- Price -->
+    <span class="text-xl font-semibold text-green-600"></span>
+
+
+    
+  </div> 
+   <div class="px-6 py-4  ">
+</div>
+ <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+  <!-- Image -->
+  <img class="p-10 object-cover" src="img/55.webp" alt="Product Image">
+
+  <!-- Card Content -->
+  <div class="px-6 py-4">
+    <!-- Title -->
+    <div class="font-bold text-xl mb-2">Water Bottels</div>
+
+    <!-- Description -->
+    <p class="text-gray-700 text-base">
+      From 299
+    </p>
+  </div>
+
+ 
+  </div>
+
+   <div class="max-w-sm w-60 bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+    <img class="p-8 object-cover" src="img/57.webp" alt="Card Image">
+    <div class="p-4">
+      <h2 class="text-xl font-semibold text-black font-bold mb-2">Umbrellas</h2>
+     <p>Upto 80% Off</p>
+    </div>
+  </div>
+   
+  
+</div>
+
+
+  </DIV>
+  <br>
+  <!-- video -->
+
+  <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+    <div class="md:flex">
+      <!-- Video -->
+      <div class="md:w-1/2 w-full">
+        <div class="aspect-w-16 aspect-h-9">
+          <iframe class="w-full h-full" src="video/videoplayback.mp4"YouTube video"
+            frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- Text content -->
+      <div class="p-6 md:w-1/2 w-full flex flex-col justify-center">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-2">Watch Product Demo</h2>
+        <p class="text-gray-600 mb-4">
+          Check out this quick demo to learn more about the product features and how it can benefit you.
+        </p>
+        <button class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 w-fit">
+          Shop Now
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+<!-- 
+  card -->
+  
+<div class="grid grid-cols-2 md:grid-cols-4  p-2">
+  <!-- Card 1 -->
+  <div class="h-80  rounded overflow-hidden shadow-lg bg-white hover:scale-105 transform transition duration-300">
+    <img class="p-2 object-cover" src="img/dry.webp" />
+    <div class="px-6 py-4">
+      <div class="font-semibold text-lg mb-2">Dry Fruits,Nuts and Seeds</div>
+      <span class="text-yellow-400 text-xl font-bold">Min 50% Off</span>
+    </div>
+    <div class="px-6 py-4">
+      <button class="bg-blue-500 text-white py-2 px-4 w-full rounded-lg hover:bg-blue-600 transition duration-200">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="h-80 rounded overflow-hidden shadow-lg bg-white hover:scale-105 transform transition duration-300">
+    <img class="p-4  object-cover" src="img/bike.webp" alt="Product Image 2" />
+    <div class="px-6 py-4">
+      <div class="font-semibold text-lg mb-2">Biker halmets</div>
+      <span class="text-yellow-400 text-xl font-bold">Min. 50% Off</span>
+    </div>
+    <div class="px-6 py-4">
+      <button class="bg-blue-500 text-white py-2 px-4 w-full rounded-lg hover:bg-blue-600 transition duration-200">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="h-80 rounded overflow-hidden shadow-lg bg-white hover:scale-105 transform transition duration-300">
+    <img class=" p-4 object-cover" src="img/cycle.webp" alt="Product Image 3" />
+    <div class="px-6 py-4">
+      <div class="font-semibold text-lg mb-2">Cycles</div>
+      <span class="text-yellow-400 text-xl font-bold">Min.50% Off</span>
+    </div>
+    <div class="px-6 py-4">
+      <button class="bg-blue-500 text-white py-2 px-4 w-full rounded-lg hover:bg-blue-600 transition duration-200">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="h-80 rounded overflow-hidden shadow-lg bg-white hover:scale-105 transform transition duration-300">
+    <img class="p-4 object-cover" src="img/vitamin.webp" alt="Product Image 4" />
+    <div class="px-6 py-4">
+      <div class="font-semibold text-lg mb-2">Vitamin suppliments</div>
+      <span class="text-yellow-400 text-xl font-bold">Min. 50% Off</span>
+    </div>
+    <div class="px-6 py-4">
+      <button class="bg-blue-500 text-white py-2 px-4 w-full rounded-lg hover:bg-blue-600 transition duration-200">Buy Now</button>
+    </div>
+  </div>
+</div>
+  
+
+<!-- footer  -->
+
+
+<footer class="bg-gray-900 text-gray-300 text-sm pt-10 pb-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-8">
+      <!-- Column 1 -->
+      <div>
+        <h3 class="text-white font-semibold mb-3">ABOUT</h3>
+        <ul>
+          <li class="mb-1 hover:underline cursor-pointer">Contact Us</li>
+          <li class="mb-1 hover:underline cursor-pointer">About Us</li>
+          <li class="mb-1 hover:underline cursor-pointer">Careers</li>
+          <li class="mb-1 hover:underline cursor-pointer">Flipkart Stories</li>
+        </ul>
+      </div>
+
+      <!-- Column 2 -->
+      <div>
+        <h3 class="text-white font-semibold mb-3">HELP</h3>
+        <ul>
+          <li class="mb-1 hover:underline cursor-pointer">Payments</li>
+          <li class="mb-1 hover:underline cursor-pointer">Shipping</li>
+          <li class="mb-1 hover:underline cursor-pointer">Cancellation</li>
+          <li class="mb-1 hover:underline cursor-pointer">Returns</li>
+        </ul>
+      </div>
+
+      <!-- Column 3 -->
+      <div>
+        <h3 class="text-white font-semibold mb-3">POLICY</h3>
+        <ul>
+          <li class="mb-1 hover:underline cursor-pointer">Return Policy</li>
+          <li class="mb-1 hover:underline cursor-pointer">Terms Of Use</li>
+          <li class="mb-1 hover:underline cursor-pointer">Security</li>
+          <li class="mb-1 hover:underline cursor-pointer">Privacy</li>
+        </ul>
+      </div>
+
+      <!-- Column 4 -->
+      <div>
+        <h3 class="text-white font-semibold mb-3">SOCIAL</h3>
+        <ul>
+          <li class="mb-1 hover:underline cursor-pointer">Facebook</li>
+          <li class="mb-1 hover:underline cursor-pointer">Twitter</li>
+          <li class="mb-1 hover:underline cursor-pointer">YouTube</li>
+        </ul>
+      </div>
+
+      <!-- Column 5 -->
+      <div class="col-span-2">
+        <h3 class="text-white font-semibold mb-3">Mail Us:</h3>
+        <p class="text-sm mb-4">
+          Flipkart Internet Private Limited, Buildings Alyssa, Begonia & Clove Embassy Tech Village, Outer Ring Road, Bengaluru, 560103, India
+        </p>
+        <h3 class="text-white font-semibold mb-3">Registered Office Address:</h3>
+        <p class="text-sm">
+          Flipkart Internet Private Limited, Building Alyssa, Begonia & Clove Embassy Tech Village, Outer Ring Road, Bengaluru, 560103, Karnataka, India
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-gray-700 pt-4 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+      <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-2 md:mb-0">
+        <span class="hover:underline cursor-pointer">Become a Seller</span>
+        <span class="hover:underline cursor-pointer">Advertise</span>
+        <span class="hover:underline cursor-pointer">Gift Cards</span>
+        <span class="hover:underline cursor-pointer">Help Center</span>
+        <span>© 2007-2025 Flipkart.com</span>
+      </div>
+      <div class="flex gap-2">
+        <!-- You can use real payment logos or icons here -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" class="h-5" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg" alt="Mastercard" class="h-5" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/RuPay_Logo.svg" alt="RuPay" class="h-5" />
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+   
+
+<script src="test.js"></script>
+ 
+</body>
+</html>
